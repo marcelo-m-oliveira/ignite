@@ -5,6 +5,10 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
 
+  img {
+    box-shadow: 0 0 0 6px ${(props) => props.theme['gray-800']};
+  }
+
   nav {
     display: flex;
     gap: 0.5rem;
