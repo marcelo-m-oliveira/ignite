@@ -102,6 +102,8 @@ export const StartCountdownButton = styled.button`
   background: ${(props) => props.theme['purple-500']};
   color: ${(props) => props.theme['gray-100']};
 
+  transition: background 0.1s;
+
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;

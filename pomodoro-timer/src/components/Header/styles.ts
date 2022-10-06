@@ -5,10 +5,6 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  img {
-    box-shadow: 0 0 0 6px ${(props) => props.theme['gray-800']};
-  }
-
   nav {
     display: flex;
     gap: 0.5rem;
@@ -33,6 +29,27 @@ export const HeaderContainer = styled.header`
       &.active {
         color: ${(props) => props.theme['purple-500']};
       }
+    }
+  }
+`
+
+export const NavLogo = styled.div`
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    box-shadow: 0 0 0 0;
+
+    font-size: 1.55rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: ${(props) => props.theme['gray-100']};
+
+    transition: color 0.1s;
+
+    &:hover {
+      color: ${(props) => props.theme['purple-500']};
     }
   }
 `
