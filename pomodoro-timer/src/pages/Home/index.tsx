@@ -1,5 +1,8 @@
+import { useState } from 'react'
+
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { v4 as uuid } from 'uuid'
 import * as zod from 'zod'
 
 import { Play } from 'phosphor-react'
@@ -24,6 +27,12 @@ const newSycleFormValidationSchema = zod.object({
 
 type newCycleFormData = zod.infer<typeof newSycleFormValidationSchema>
 
+interface Cycle {
+  id: string
+  taks: string
+  minutesAmount: number
+}
+
 export function Home() {
   const { register, handleSubmit, watch, reset } = useForm<newCycleFormData>({
     resolver: zodResolver(newSycleFormValidationSchema),
@@ -33,10 +42,25 @@ export function Home() {
     },
   })
 
+  const [cycles, setCycles] = useState<Cycle[]>([])
+  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+
   function handleCreateNewCycle(data: newCycleFormData) {
-    console.log(data)
+    const id = uuid()
+
+    const newCycle: Cycle = {
+      id,
+      taks: data.task,
+      minutesAmount: data.minutesAmount,
+    }
+    setCycles((state) => [...state, ...cycles, newCycle])
+    setActiveCycleId(id)
+
     reset()
   }
+
+  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
+  console.log(activeCycle)
 
   const task = watch('task')
   const isSubmitDisabled = !task
