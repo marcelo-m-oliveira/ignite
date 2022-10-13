@@ -25,7 +25,7 @@ export function Comment({ content, onDeleteComment }: CommentProps) {
 
   return (
     <div className={styles.comment}>
-      <Avatar alt='' hasBorder={false} src='https://scontent.fssa14-1.fna.fbcdn.net/v/t39.30808-6/307885363_3334231036862939_1770154639640304178_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=agQ_xBlzuFEAX_ixvTm&_nc_ht=scontent.fssa14-1.fna&oh=00_AT-BXKXEyYlQWk0iUqm6ubUnEh6uuMjbuOOkvfqeYWrHZw&oe=63335798' />
+      <Avatar alt='' hasBorder={false} src='https://scontent.fssa10-1.fna.fbcdn.net/v/t39.30808-6/309691954_3343629382589771_5986181114663874653_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeE-eRNlR-Ac1RfEGeRGfC45mruPeE0vaqKau494TS9qooYriC_-yxvapL-Lhjmf8FVg3dpo26KZVmeT-25mxL31&_nc_ohc=0aTX-5tTHg8AX8nhMpF&_nc_ht=scontent.fssa10-1.fna&oh=00_AT_z0Dt2N7MfTqtpFpKFdWq9jxRznlrySNpglQ7eaQfutA&oe=634C893F' />
       <div className={styles.commentBox}>
         <div className={styles.commentContent}>
           <header>
