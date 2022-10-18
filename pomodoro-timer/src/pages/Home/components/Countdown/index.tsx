@@ -55,9 +55,9 @@ export function Countdown() {
   const seconds = String(secondsAmount).padStart(2, '0')
 
   useEffect(() => {
-    if (activeCycle) {
-      document.title = `${minutes}:${seconds} - Pomodoro Timer`
-    }
+    activeCycle
+      ? (document.title = `${minutes}:${seconds} - Pomodoro Timer`)
+      : (document.title = 'Pomodoro Timer')
   }, [minutes, seconds, activeCycle])
 
   return (
