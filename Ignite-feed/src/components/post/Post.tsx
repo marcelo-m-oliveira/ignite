@@ -89,7 +89,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
             case 'paragraph':
               return <p key={line.content}>{line.content}</p>
             case 'link':
-              return <p key={line.content}><a href={line.href}>{line.content}</a></p>
+              return <p key={line.content}><a target="_blank" href={line.href}>{line.content}</a></p>
           }
         })}
       </div>
