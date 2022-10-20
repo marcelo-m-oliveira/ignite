@@ -1,3 +1,5 @@
+import { ShoppingCart, Plus, Minus } from 'phosphor-react'
+
 import {
   CoffeeMain,
   CoffeeListCard,
@@ -6,10 +8,10 @@ import {
   CoffeeListAmount,
   CoffeeListAmountButton,
   CoffeeCount,
+  CoffeeForm,
 } from './styles'
 
 import coffeeTradicional from '../../../../public/CoffeeImages/expresso.svg'
-import { ShoppingCart } from 'phosphor-react'
 
 export function CoffeeList() {
   return (
@@ -18,18 +20,25 @@ export function CoffeeList() {
       <CoffeeListContainer>
         <CoffeeListCard>
           <img src={coffeeTradicional} alt="" />
-
           <CoffeeListTitle>
-            <p>TRADICIONAL</p>
-            <h2>Expresso Tradicional</h2>
+            <label>Tradicional</label>
+            <p>Expresso Tradicional</p>
             <span>O tradicional café feito com água quente e grãos moídos</span>
           </CoffeeListTitle>
           <CoffeeListAmount>
-            <h3>R$ 9,90</h3>
-            <CoffeeListAmountButton>
-              <CoffeeCount type="number" placeholder="1" value={1} />
-              <ShoppingCart weight="fill" size={22} />
-            </CoffeeListAmountButton>
+            <span>
+              R$ <span>9,90</span>
+            </span>
+            <CoffeeForm>
+              <CoffeeCount>
+                <Minus size={16} weight="fill" />
+                <div>1</div>
+                <Plus size={16} weight="fill" />
+              </CoffeeCount>
+              <CoffeeListAmountButton>
+                <ShoppingCart weight="fill" size={22} />
+              </CoffeeListAmountButton>
+            </CoffeeForm>
           </CoffeeListAmount>
         </CoffeeListCard>
       </CoffeeListContainer>
