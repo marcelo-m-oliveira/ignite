@@ -74,7 +74,6 @@ export function Home() {
   const [filtersButton, setFilterButton] =
     useState<FilterButtonsProps[]>(initialState)
   const [filters, setFilters] = useState<string[]>([])
-  const [coffee, setCoffees] = useState<CoffeeProps[]>([])
 
   return (
     <HomeContainer>
@@ -91,25 +90,25 @@ export function Home() {
             <IntroItensContainer>
               <div>
                 <IntroItems itemsColor="yellowDark">
-                  <ShoppingCart size={20} weight="fill" />
+                  <ShoppingCart size={17} weight="fill" />
                 </IntroItems>
                 <span>Compra simples e segura</span>
               </div>
               <div>
                 <IntroItems itemsColor="baseText">
-                  <Package size={20} weight="fill" />
+                  <Package size={17} weight="fill" />
                 </IntroItems>
                 <span>Embalagem mantém o café intacto</span>
               </div>
               <div>
                 <IntroItems itemsColor="yellow">
-                  <Timer size={20} weight="fill" />
+                  <Timer size={17} weight="fill" />
                 </IntroItems>
                 <span>Entrega rápida e rastreada</span>
               </div>
               <div>
                 <IntroItems itemsColor="purple">
-                  <Coffee size={20} weight="fill" />
+                  <Coffee size={17} weight="fill" />
                 </IntroItems>
                 <span>O café chega fresquinho até você</span>
               </div>

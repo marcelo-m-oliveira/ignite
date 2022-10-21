@@ -50,7 +50,7 @@ export const IntroTitleContainer = styled.div`
 
 export const IntroItensContainer = styled.div`
   display: grid !important;
-  grid-template-columns: 15rem 18.3rem;
+  grid-template-columns: 15rem 18.4rem;
   row-gap: 1.25rem;
 
   div {
@@ -86,7 +86,7 @@ export const IntroItems = styled.p<IntroItensProps>`
   align-items: center;
   background: ${(props) => props.theme[itensBackground[props.itemsColor]]};
   border-radius: 100%;
-  padding: 0.3125rem;
+  padding: 0.5rem;
 `
 
 export const CoffeeContainer = styled.section`
