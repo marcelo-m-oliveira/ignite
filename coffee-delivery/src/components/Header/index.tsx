@@ -8,10 +8,9 @@ import { HeaderContainer, ButtonLocal, ButtonShoppingCart } from './styles'
 export function Header() {
   return (
     <HeaderContainer>
-      <NavLink to="/">
+      <NavLink to="/" title="Coffee Delivery">
         <img src={logoCoffeeDelivery} alt="" />
       </NavLink>
-
       <nav>
         <ButtonLocal>
           <MapPin weight="fill" size={22} /> Salvador, BA

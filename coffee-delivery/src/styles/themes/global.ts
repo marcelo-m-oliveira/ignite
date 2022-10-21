@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
 :focus {
   outline: 0;
   border-radius: 6px;
-  box-shadow: 0 0 0 2px ${(props) => props.theme.yellow};
+  box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-dark']};
 }
 
 body {
@@ -23,5 +23,12 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1rem;
+  }
+
+  h1 {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    color: ${(props) => props.theme['base-title']};
   }
 `
