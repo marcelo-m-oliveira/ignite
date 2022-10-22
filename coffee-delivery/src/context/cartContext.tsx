@@ -63,7 +63,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
     setCart(newItem)
   }
-  console.log(cart)
 
   return (
     <CartContext.Provider
