@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { ShoppingCart } from 'phosphor-react'
 
 import { CountQuantity } from '../../../../components/CountQuantity/index'
+
+import { CartContext } from '../../../../context/cartContext'
 
 import {
   CoffeeItemContainer,
@@ -28,7 +30,25 @@ interface CoffeeItemProps {
 export function CoffeeItem({
   coffee: { id, imgUrl, labels, title, subtitle, price },
 }: CoffeeItemProps) {
-  const [count, setCount] = useState(1)
+  const [quantity, setQuantity] = useState(1)
+
+  const { cart, addItemToCart } = useContext(CartContext)
+
+  function handleSubmit(event: React.FormEvent) {
+    event.preventDefault()
+
+    const coffee = {
+      id,
+      imgUrl,
+      labels,
+      title,
+      subtitle,
+      price,
+      quantity,
+    }
+
+    addItemToCart(coffee)
+  }
 
   return (
     <CoffeeItemContainer>
@@ -45,10 +65,13 @@ export function CoffeeItem({
       </CoffeeDescription>
       <CoffeeFormContainer>
         <span>
-          R$<span>{price}</span>
+          R${' '}
+          <span>
+            {price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+          </span>
         </span>
-        <CoffeeForm>
-          <CountQuantity quantity={count} setQuantity={setCount} />
+        <CoffeeForm onSubmit={handleSubmit}>
+          <CountQuantity quantity={quantity} setQuantity={setQuantity} />
           <CardButton type="submit">
             <ShoppingCart size={22} weight="fill" />
           </CardButton>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { ShoppingCart, Package, Timer, Coffee } from 'phosphor-react'
 import { v4 as uuid } from 'uuid'
@@ -71,9 +71,62 @@ const initialState = [
 ]
 
 export function Home() {
-  const [filtersButton, setFilterButton] =
+  const [coffee, setCoffee] = useState<CoffeeProps[]>([])
+  const [filterButtons, setFilterButtons] =
     useState<FilterButtonsProps[]>(initialState)
   const [filters, setFilters] = useState<string[]>([])
+
+  useEffect(() => {
+    const formattedFilters: string[] = []
+    filters.map((filter) => {
+      return formattedFilters.push('labes_like=' + filter)
+    })
+    async function getCoffees() {
+      const c = coffees.map((coffees) => {
+        return coffees
+      })
+      setCoffee(c)
+    }
+
+    getCoffees()
+  }, [filters])
+
+  function handleFiltering(event: React.MouseEvent | React.TouchEvent) {
+    const button = event.target as HTMLElement
+
+    const filterId = String(button.dataset.id)
+
+    if (filterId === '') {
+      setFilterButtons(initialState)
+      setFilters([])
+    } else {
+      const changedFilterButtons = filterButtons.map((filter) => {
+        if (filter.id === filterId) {
+          const filterIsActive = filter.isActive
+          return { ...filter, isActive: !filterIsActive }
+        } else if (filter.id === '') {
+          return { ...filter, isActive: false }
+        } else {
+          return { ...filter }
+        }
+      })
+      const activatedValidation = changedFilterButtons.filter((e) => {
+        return e.isActive === true
+      })
+      if (activatedValidation.length > 0) {
+        setFilterButtons(changedFilterButtons)
+
+        const newFilteredList = activatedValidation.map((active) => {
+          return active.title.toLowerCase().replace(' ', '').replace('ó', 'o')
+        })
+
+        setFilters(newFilteredList)
+      } else {
+        setFilterButtons(initialState)
+        setFilters([])
+      }
+    }
+  }
 
   return (
     <HomeContainer>
@@ -121,11 +174,13 @@ export function Home() {
         <header>
           <h1>Nossos Cafés</h1>
           <nav>
-            {filtersButton.map((filter) => (
+            {filterButtons.map((filter) => (
               <ButtonFilter
-                key={filter.id}
+                key={filter.title}
                 data-id={filter.id}
+                onClick={handleFiltering}
                 isSelected={filter.isActive}
+                value={filter.title.toUpperCase()}
               >
                 {filter.title.toUpperCase()}
               </ButtonFilter>
@@ -133,8 +188,8 @@ export function Home() {
           </nav>
         </header>
         <CoffeeList>
-          {coffees.map((coffee) => {
-            return <CoffeeItem key={coffee.id} coffee={coffee} />
+          {coffee.map((coffee) => {
+            return <CoffeeItem key={coffee.subtitle} coffee={coffee} />
           })}
         </CoffeeList>
       </CoffeeContainer>
