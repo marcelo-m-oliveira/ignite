@@ -52,6 +52,15 @@ export const CheckoutForm = styled.div`
     }
   }
 
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
   .width-1 {
     width: 3.2rem;
   }
@@ -68,6 +77,39 @@ export const CheckoutForm = styled.div`
   }
 `
 
-export const PaymentContainer = styled.div``
+export const PaymentContainer = styled.div`
+  width: 40rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2.5rem;
 
-export const PaymentTitle = styled.div``
+  background: ${(props) => props.theme['base-card']};
+  box-shadow: 0 1px 1px -3px rgba(0, 0, 0, 0.5), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+`
+
+export const PaymentTitle = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  div {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  svg {
+    color: ${(props) => props.theme.purple};
+  }
+`
+export const PaymentButtonsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 0.75rem;
+`
+export const CartItensCheckoutContainer = styled.div``
+export const CartItemsSummary = styled.div``
+export const TotalSummaryContainer = styled.div``
+export const TotalSummaryLabels = styled.div``
