@@ -20,8 +20,6 @@ import ImgCoffee from '../../assets/bg.svg'
 import { CoffeeItem } from './Components/CoffeeItem'
 import { coffees } from '../../server/data'
 
-const id = uuid()
-
 export interface CoffeeProps {
   id: string
   imgUrl: string
@@ -32,39 +30,39 @@ export interface CoffeeProps {
 }
 
 interface FilterButtonsProps {
-  id: string
+  id: number
   title: string
   isActive: boolean
 }
 
 const initialState = [
   {
-    id,
+    id: 1,
     title: 'todos',
     isActive: true,
   },
   {
-    id,
+    id: 2,
     title: 'Tradicional',
     isActive: false,
   },
   {
-    id,
+    id: 3,
     title: 'especial',
     isActive: false,
   },
   {
-    id,
+    id: 4,
     title: 'com leite',
     isActive: false,
   },
   {
-    id,
+    id: 5,
     title: 'alcoólico',
     isActive: false,
   },
   {
-    id,
+    id: 6,
     title: 'gelado',
     isActive: false,
   },
@@ -94,9 +92,9 @@ export function Home() {
   function handleFiltering(event: React.MouseEvent | React.TouchEvent) {
     const button = event.target as HTMLElement
 
-    const filterId = String(button.dataset.id)
+    const filterId = Number(button.dataset.id)
 
-    if (filterId === '') {
+    if (filterId === 1) {
       setFilterButtons(initialState)
       setFilters([])
     } else {
@@ -104,7 +102,7 @@ export function Home() {
         if (filter.id === filterId) {
           const filterIsActive = filter.isActive
           return { ...filter, isActive: !filterIsActive }
-        } else if (filter.id === '') {
+        } else if (filter.id === 1) {
           return { ...filter, isActive: false }
         } else {
           return { ...filter }

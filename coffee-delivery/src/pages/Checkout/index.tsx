@@ -1,5 +1,5 @@
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import {
@@ -23,12 +23,14 @@ import {
   CartItemsSummary,
   TotalSummaryContainer,
   TotalSummaryLabels,
+  SummaryButton,
 } from './styles'
 
 import { CartContext } from '../../context/cartContext'
 
-import { Button } from '../Home/Components/CoffeeItem/Components/Button'
-import { Input } from '../Home/Components/CoffeeItem/Components/Input'
+import { CartItems } from './Components/CartItems'
+import { Button } from '../../components/Button'
+import { Input } from '../../components/Input'
 
 export interface CartItemsProps {
   id: number
@@ -56,10 +58,14 @@ const AdressFormValidationSchema = zod.object({
     .max(2),
 })
 
+const delivery = 3.5
+
 export type AdressFormData = zod.infer<typeof AdressFormValidationSchema>
 
 export function Checkout() {
   const [isActive, setIsActive] = useState([false, false, false])
+  const [totalItemsPrice, setTotalItemsPrice] = useState(0)
+
   const { cart, setCheckout } = useContext(CartContext)
 
   const addressForm = useForm<AdressFormData>({
@@ -72,6 +78,14 @@ export function Checkout() {
       state: '',
     },
   })
+
+  useEffect(() => {
+    const totalItems = cart.reduce((acum, cur) => {
+      return acum + cur.price * cur.quantity
+    }, 0)
+
+    setTotalItemsPrice(totalItems)
+  }, [cart])
 
   function handlePaymentSelection(event: EventTarget & HTMLButtonElement) {
     const isActiveButton = !event.getAttribute('isActive')
@@ -93,11 +107,11 @@ export function Checkout() {
   function handleSubmitOrder(data: AdressFormData) {
     let metodPayment
 
-    if (isActive[0] === true) {
+    if (isActive[0]) {
       metodPayment = 'cartão de crédito'
-    } else if (isActive[1] === true) {
+    } else if (isActive[1]) {
       metodPayment = 'cartão de débito'
-    } else if (isActive[2] === true) {
+    } else if (isActive[2]) {
       metodPayment = 'dinheiro'
     }
 
@@ -120,6 +134,7 @@ export function Checkout() {
   }
 
   const { handleSubmit, register } = addressForm
+  const finalPrice = totalItemsPrice + delivery
 
   return (
     <CheckoutContainer onSubmit={handleSubmit(handleSubmitOrder)}>
@@ -228,14 +243,49 @@ export function Checkout() {
             </Button>
           </PaymentButtonsContainer>
         </PaymentContainer>
-        <CartItensCheckoutContainer>
-          <CartItemsSummary>
-            <TotalSummaryContainer>
-              <TotalSummaryLabels></TotalSummaryLabels>
-            </TotalSummaryContainer>
-          </CartItemsSummary>
-        </CartItensCheckoutContainer>
       </CheckoutFormContainer>
+      <CartItensCheckoutContainer>
+        <h1>Cafés Selecionados</h1>
+        <CartItemsSummary>
+          {cart.length > 0 ? (
+            cart.map((coffee) => {
+              return <CartItems key={coffee.title} coffee={coffee} />
+            })
+          ) : (
+            <h3>Não há itens no carrinho</h3>
+          )}
+          <TotalSummaryContainer>
+            <TotalSummaryLabels>
+              <span>Total de Itens</span>
+              <span>
+                R${' '}
+                {totalItemsPrice.toLocaleString('pt-BR', {
+                  minimumFractionDigits: 2,
+                })}
+              </span>
+            </TotalSummaryLabels>
+            <TotalSummaryLabels>
+              <span>Entrega</span>
+              <span>
+                R${' '}
+                {delivery.toLocaleString('pt-BR', {
+                  minimumFractionDigits: 2,
+                })}
+              </span>
+            </TotalSummaryLabels>
+            <TotalSummaryLabels>
+              <h1>Total</h1>
+              <h1>
+                R${' '}
+                {finalPrice.toLocaleString('pt-BR', {
+                  minimumFractionDigits: 2,
+                })}
+              </h1>
+            </TotalSummaryLabels>
+          </TotalSummaryContainer>
+          <SummaryButton type="submit">Confirar Pedido</SummaryButton>
+        </CartItemsSummary>
+      </CartItensCheckoutContainer>
     </CheckoutContainer>
   )
 }
