@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 import { ShoppingCart, Package, Timer, Coffee } from 'phosphor-react'
-import { v4 as uuid } from 'uuid'
 
 import {
   HomeContainer,

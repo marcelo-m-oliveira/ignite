@@ -1,19 +1,19 @@
 import { v4 as uuid } from 'uuid'
 
-import expresso from '../assets/CoffeeImages/expresso.svg'
-import americano from '../assets/CoffeeImages/americano.svg'
+import chocolateQuente from '../assets/CoffeeImages/chocolate-quente.svg'
 import expressoCremoso from '../assets/CoffeeImages/expresso-cremoso.svg'
-import cafeGelado from '../assets/CoffeeImages/cafe-gelado.svg'
 import cafeLeite from '../assets/CoffeeImages/cafe-com-leite.svg'
-import latte from '../assets/CoffeeImages/latte.svg'
+import cafeGelado from '../assets/CoffeeImages/cafe-gelado.svg'
+import americano from '../assets/CoffeeImages/americano.svg'
 import capuccino from '../assets/CoffeeImages/capuccino.svg'
 import macchiato from '../assets/CoffeeImages/macchiato.svg'
 import mocaccino from '../assets/CoffeeImages/mocaccino.svg'
-import chocolateQuente from '../assets/CoffeeImages/chocolate-quente.svg'
-import cubano from '../assets/CoffeeImages/cubano.svg'
-import havaiano from '../assets/CoffeeImages/havaiano.svg'
-import arabe from '../assets/CoffeeImages/arabe.svg'
 import irlandes from '../assets/CoffeeImages/irlandes.svg'
+import havaiano from '../assets/CoffeeImages/havaiano.svg'
+import expresso from '../assets/CoffeeImages/expresso.svg'
+import cubano from '../assets/CoffeeImages/cubano.svg'
+import latte from '../assets/CoffeeImages/latte.svg'
+import arabe from '../assets/CoffeeImages/arabe.svg'
 
 const id = uuid()
 
