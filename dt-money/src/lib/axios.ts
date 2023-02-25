@@ -1,6 +1,5 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL:
-    'https://my-json-server.typicode.com/marcelo-m-oliveira/ignite/dt-money',
+  baseURL: 'https://my-json-server.typicode.com/marcelo-m-oliveira/ignite',
 })
