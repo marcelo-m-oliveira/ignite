@@ -1,12 +1,12 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "description": "Desenvolvimento de site",
+      "description": "Pix",
+      "price": 3000,
+      "category": "Salario",
       "type": "income",
-      "category": "Venda",
-      "price": 14000,
-      "createadAt": "2023-02-24T00:46:15.442Z"
+      "createdAt": "2023-02-23T15:15:08.782Z",
+      "id": 1
     },
     {
       "id": 2,
@@ -14,15 +14,39 @@
       "type": "outcome",
       "category": "Outros",
       "price": 1200,
-      "createadAt": "2023-02-28T00:46:15.442Z"
+      "createdAt": "2023-02-25T15:15:08.782Z"
     },
     {
-      "id": 3,
-      "description": "Aluguel do apartamento",
-      "type": "outcome",
+      "description": "Luz",
+      "price": 210,
       "category": "Casa",
-      "price": 1200,
-      "createadAt": "2023-02-28T00:46:15.442Z"
+      "type": "outcome",
+      "createdAt": "2023-02-25T15:36:44.964Z",
+      "id": 3
+    },
+    {
+      "description": "PC",
+      "price": 449,
+      "category": "Outros",
+      "type": "outcome",
+      "createdAt": "2023-02-25T15:42:00.083Z",
+      "id": 4
+    },
+    {
+      "description": "Dentista",
+      "price": 100,
+      "category": "Saúde",
+      "type": "outcome",
+      "createdAt": "2023-02-25T15:42:24.507Z",
+      "id": 5
+    },
+    {
+      "description": "Net",
+      "price": 100,
+      "category": "Casa",
+      "type": "outcome",
+      "createdAt": "2023-02-25T15:42:33.423Z",
+      "id": 6
     }
   ]
 }

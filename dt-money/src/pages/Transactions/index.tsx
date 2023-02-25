@@ -33,7 +33,7 @@ export function Transactions() {
                   </td>
                   <td>{transaction.category}</td>
                   <td>
-                    {dataFormatter.format(new Date(transaction.createadAt))}
+                    {dataFormatter.format(new Date(transaction.createdAt))}
                   </td>
                 </tr>
               )
