@@ -25,6 +25,11 @@ export const TransactionsTable = styled.table`
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
     }
+
+    @media screen and (max-width: 600px) {
+      display: flex;
+      width: 100%;
+    }
   }
 `
 interface PriceHighlightProps {
