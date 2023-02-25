@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import { Header } from '../../components/Header'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { Summary } from './../../components/Summary/index'
 import { ShearchForm } from './components/SearchForm'
 import {
@@ -8,6 +10,7 @@ import {
 } from './styles'
 
 export function Transactions() {
+  const { transactions } = useContext(TransactionsContext)
   return (
     <div>
       <Header />
@@ -17,30 +20,20 @@ export function Transactions() {
         <ShearchForm />
         <TransactionsTable>
           <tbody>
-            <tr>
-              <td width="50%">Desenvolvimento de site</td>
-              <td>
-                <PriceHighlight variant="income">R$ 12.000,00</PriceHighlight>
-              </td>
-              <td>Venda</td>
-              <td>24/02/2023</td>
-            </tr>
-            <tr>
-              <td width="50%">Cartão de crédito</td>
-              <td>
-                <PriceHighlight variant="outcome">- R$ 1.200,00</PriceHighlight>
-              </td>
-              <td>Outros</td>
-              <td>01/03/2023</td>
-            </tr>
-            <tr>
-              <td width="50%">Aluguel do apartamento</td>
-              <td>
-                <PriceHighlight variant="outcome">- R$ 1.200,00</PriceHighlight>
-              </td>
-              <td>Casa</td>
-              <td>25/03/2023</td>
-            </tr>
+            {transactions.map((transaction) => {
+              return (
+                <tr key={transaction.id}>
+                  <td width="50%">{transaction.description}</td>
+                  <td>
+                    <PriceHighlight variant={transaction.type}>
+                      {transaction.price}
+                    </PriceHighlight>
+                  </td>
+                  <td>{transaction.category}</td>
+                  <td>{transaction.createadAt}</td>
+                </tr>
+              )
+            })}
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>

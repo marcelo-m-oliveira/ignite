@@ -1,0 +1,28 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 14000,
+      "createadAt": "2023-02-24T00:46:15.442Z"
+    },
+    {
+      "id": 2,
+      "description": "Cartão de crédito",
+      "type": "outcome",
+      "category": "Outros",
+      "price": 1200,
+      "createadAt": "2023-02-28T00:46:15.442Z"
+    },
+    {
+      "id": 3,
+      "description": "Aluguel do apartamento",
+      "type": "outcome",
+      "category": "Casa",
+      "price": 1200,
+      "createadAt": "2023-02-28T00:46:15.442Z"
+    }
+  ]
+}
