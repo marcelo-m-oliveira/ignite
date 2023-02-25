@@ -56,7 +56,7 @@ export const SummaryCard = styled.div<SummaryCardProps>`
             width: 100%;
           `
         : css`
-            width: 46.547%;
+            width: 45.76%;
           `}
   }
 `
