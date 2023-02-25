@@ -1,18 +1,23 @@
 import { MagnifyingGlass } from 'phosphor-react'
-import { ShearchFormContainer } from './styles'
+import { SearchFormContainer } from './styles'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useContext } from 'react'
 import { TransactionsContext } from '../../../../contexts/TransactionsContext'
+import { useContextSelector } from 'use-context-selector'
 
 const searchFormSchema = z.object({
   query: z.string(),
 })
 
 type SearchFormInputs = z.infer<typeof searchFormSchema>
-export function ShearchForm() {
-  const { fetchTransactions } = useContext(TransactionsContext)
+export function SearchForm() {
+  const fetchTransactions = useContextSelector(
+    TransactionsContext,
+    (context) => {
+      return context.fetchTransactions
+    },
+  )
   const {
     register,
     handleSubmit,
@@ -25,7 +30,7 @@ export function ShearchForm() {
   }
 
   return (
-    <ShearchFormContainer onSubmit={handleSubmit(handleSearchTransactions)}>
+    <SearchFormContainer onSubmit={handleSubmit(handleSearchTransactions)}>
       <input
         type="text"
         placeholder="Busque por transações"
@@ -35,6 +40,8 @@ export function ShearchForm() {
         <MagnifyingGlass size={20} />
         Buscar
       </button>
-    </ShearchFormContainer>
+    </SearchFormContainer>
   )
 }
+
+// export const SearchForm = memo(SearchFormComponent) // alternativo
