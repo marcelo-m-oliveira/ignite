@@ -13,6 +13,21 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 600px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    img {
+      margin-bottom: 1rem;
+    }
+
+    button {
+      width: 80%;
+      justify-content: center;
+    }
+  }
 `
 
 export const NewTransactionButton = styled.button`

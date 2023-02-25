@@ -11,10 +11,8 @@ export const SummaryContainer = styled.section`
   margin-top: -5rem;
 
   @media screen and (max-width: 600px) {
-    max-width: 600px;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(1, 1fr);
   }
 `
 
@@ -45,18 +43,4 @@ export const SummaryCard = styled.div<SummaryCardProps>`
     css`
       background: ${props.theme['green-500']};
     `}
-
-  @media screen and (max-width: 600px) {
-    strong {
-      font-size: 1.5rem;
-    }
-    ${(props) =>
-      props.variant === 'green'
-        ? css`
-            width: 100%;
-          `
-        : css`
-            width: 45.76%;
-          `}
-  }
 `

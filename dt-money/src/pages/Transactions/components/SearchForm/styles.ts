@@ -42,4 +42,12 @@ export const SearchFormContainer = styled.form`
       transition: background-color 0.2s, color 0.2s, border-color 0.2s;
     }
   }
+
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 `

@@ -16,6 +16,14 @@ export const Content = styled(Dialog.Content)`
   padding: 2.5rem 3rem;
   background: ${(props) => props.theme['gray-800']};
 
+  @media screen and (max-width: 600px) {
+    min-width: 50%;
+    padding: 2.5rem 3rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  }
+
   position: fixed;
   top: 50%;
   left: 50%;
