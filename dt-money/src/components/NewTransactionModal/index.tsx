@@ -34,7 +34,6 @@ export function NewTransactionModal() {
 
   async function handleCreateNewTransactions(data: NewTransactionFormInputs) {
     await new Promise((resolve) => setTimeout(resolve, 2000))
-    console.log(data)
   }
   return (
     <Dialog.Portal>
