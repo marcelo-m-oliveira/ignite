@@ -9,7 +9,8 @@ import {
 } from './styles'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
+import CurrencyInput from 'react-currency-input-field'
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -22,11 +23,13 @@ type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
   const {
+    control,
     register,
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
+    defaultValues: { type: 'income' },
   })
 
   async function handleCreateNewTransactions(data: NewTransactionFormInputs) {
@@ -39,7 +42,7 @@ export function NewTransactionModal() {
       <Content>
         <Dialog.Title>Nova Transação</Dialog.Title>
 
-        <CloseButton>
+        <CloseButton type="reset">
           <X size={24} />
         </CloseButton>
 
@@ -50,8 +53,8 @@ export function NewTransactionModal() {
             required
             {...register('description')}
           />
-          <input
-            type="number"
+          <CurrencyInput
+            intlConfig={{ locale: 'pt-BR', currency: 'BRL' }}
             placeholder="Preço"
             required
             {...register('price', { valueAsNumber: true })}
@@ -62,26 +65,27 @@ export function NewTransactionModal() {
             required
             {...register('category')}
           />
-
-          <TransactionsType>
-            <TransactionsTypeButton
-              value="income"
-              variant="income"
-              {...register('type')}
-            >
-              <ArrowCircleUp size={24} />
-              Entrada
-            </TransactionsTypeButton>
-            <TransactionsTypeButton
-              variant="outcome"
-              value="outcome"
-              {...register('type')}
-            >
-              <ArrowCircleDown size={24} />
-              Saída
-            </TransactionsTypeButton>
-          </TransactionsType>
-
+          <Controller
+            control={control}
+            render={({ field }) => {
+              return (
+                <TransactionsType
+                  onValueChange={field.onChange}
+                  value={field.value}
+                >
+                  <TransactionsTypeButton value="income" variant="income">
+                    <ArrowCircleUp size={24} />
+                    Entrada
+                  </TransactionsTypeButton>
+                  <TransactionsTypeButton variant="outcome" value="outcome">
+                    <ArrowCircleDown size={24} />
+                    Saída
+                  </TransactionsTypeButton>
+                </TransactionsType>
+              )
+            }}
+            name="type"
+          />
           <button type="submit" disabled={isSubmitting}>
             Cadastrar
           </button>
