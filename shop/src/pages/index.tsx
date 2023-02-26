@@ -1,5 +1,5 @@
 import { HomeContainer, Product } from '@/src/styles/pages/home'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import Image from 'next/image'
 
 import { useKeenSlider } from 'keen-slider/react'
@@ -7,6 +7,7 @@ import 'keen-slider/keen-slider.min.css'
 
 import { stripe } from '../lib/stripe'
 import Stripe from 'stripe'
+
 import { priceFormatter } from '../utils/formatter'
 
 interface HomeProps {
@@ -14,7 +15,7 @@ interface HomeProps {
     id: string
     name: string
     imageUrl: string
-    price: number
+    price: string
   }[]
 }
 
@@ -25,15 +26,21 @@ export default function Home({ products }: HomeProps) {
       spacing: 48,
     },
   })
+
   return (
     <HomeContainer ref={sliderRef} className="keen-slider">
       {products.map((product) => {
         return (
-          <Product key={product.id} className="keen-slider__slide">
+          <Product
+            href={`/product/${product.id}`}
+            key={product.id}
+            className="keen-slider__slide"
+            prefetch={false}
+          >
             <Image src={product.imageUrl} width={520} height={480} alt="" />
             <footer>
               <strong>{product.name}</strong>
-              <span>{priceFormatter.format(product.price)}</span>
+              <span>{product.price}</span>
             </footer>
           </Product>
         )
@@ -42,7 +49,7 @@ export default function Home({ products }: HomeProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
     expand: ['data.default_price'],
   })
@@ -54,7 +61,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: price.unit_amount! / 100,
+      price: priceFormatter.format(price.unit_amount! / 100),
     }
   })
 
@@ -62,5 +69,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       products,
     },
+    revalidate: 60 * 60 * 2, // 2hrs
   }
 }

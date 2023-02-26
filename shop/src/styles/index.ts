@@ -18,8 +18,8 @@ export const {
       gray300: '#c4c4cc',
       gray100: '#e1e1e6',
 
-      purple500: '#a855f7',
-      purple300: '#d8b4fe',
+      purple500: '#9333ea',
+      purple300: '#a855f7',
     },
 
     fontSizes: {
