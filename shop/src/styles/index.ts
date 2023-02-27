@@ -29,4 +29,8 @@ export const {
       '2xl': '2rem',
     },
   },
+
+  media: {
+    bp1: '(max-width: 600px)',
+  },
 })

@@ -5,6 +5,7 @@ import { Container, Header } from '../styles/pages/app'
 import { globalStyles } from '../styles/global'
 
 import logoImg from '../assets/logo.svg'
+import Link from 'next/link'
 
 globalStyles()
 export default function App({ Component, pageProps }: AppProps) {
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Container>
       <Header>
         <Image src={logoImg} alt="" />
+        {pageProps.product && <Link href={'/'}>Voltar ao catálogo</Link>}
       </Header>
       <Component {...pageProps} />
     </Container>

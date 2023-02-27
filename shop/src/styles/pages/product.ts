@@ -8,6 +8,13 @@ export const ProductContainer = styled('main', {
 
   maxWidth: 1100,
   margin: '0 auto',
+
+  '@bp1': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
 })
 export const ImageContainer = styled('div', {
   width: '100%',
@@ -23,6 +30,16 @@ export const ImageContainer = styled('div', {
   img: {
     objectFit: 'cover',
   },
+
+  '@bp1': {
+    maxWidth: 250,
+    height: 300,
+
+    img: {
+      objectFit: 'cover',
+      height: 300,
+    },
+  },
 })
 
 export const ProductDetails = styled('div', {
@@ -32,6 +49,10 @@ export const ProductDetails = styled('div', {
   h1: {
     fontSize: '$2xl',
     color: '$gray300',
+
+    '@bp1': {
+      fontSize: '$xl',
+    },
   },
 
   span: {
@@ -39,6 +60,10 @@ export const ProductDetails = styled('div', {
     display: 'block',
     fontSize: '$2xl',
     color: '$purple300',
+
+    '@bp1': {
+      fontSize: '$xl',
+    },
   },
 
   p: {
@@ -68,6 +93,10 @@ export const ProductDetails = styled('div', {
     '&:disabled': {
       opacity: 0.6,
       cursor: 'not-allowed',
+    },
+
+    '@bp1': {
+      marginTop: '2.5rem',
     },
   },
 })
