@@ -1,4 +1,4 @@
-import { globalCss } from '@ignite-ui/react'
+import { Button, globalCss } from '@ignite-ui/react'
 
 export const globalStyles = globalCss({
   '*': {
@@ -10,5 +10,11 @@ export const globalStyles = globalCss({
     backgroundColor: '$gray900',
     color: '$gray100',
     '-webkit-font-smoothing': 'antialiased',
+
+    [`${Button}`]: {
+      '&:hover': {
+        transition: 'background 0.2s',
+      },
+    },
   },
 })

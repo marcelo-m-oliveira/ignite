@@ -1,4 +1,4 @@
-import { primsma } from '@/lib/prisma'
+import { prisma } from '@/lib/prisma'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { setCookie } from 'nookies'
 
@@ -12,7 +12,7 @@ export default async function handler(
 
   const { name, username } = req.body
 
-  const userExists = await primsma.user.findUnique({
+  const userExists = await prisma.user.findUnique({
     where: {
       username,
     },
@@ -22,7 +22,7 @@ export default async function handler(
     return res.status(400).json({ message: 'User already exists' })
   }
 
-  const user = await primsma.user.create({
+  const user = await prisma.user.create({
     data: {
       name,
       username,
