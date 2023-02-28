@@ -10,6 +10,7 @@ export function PrismaAdapter(
   res: NextApiResponse,
 ): Adapter {
   return {
+    // atualizar o usuario já criado na aplicação
     async createUser(user) {
       const { '@Ignitecall:UserId': userIdOnCookies } = parseCookies({ req })
 
@@ -139,7 +140,7 @@ export function PrismaAdapter(
     async linkAccount(account) {
       await prisma.account.create({
         data: {
-          user_Id: account.userId,
+          user_id: account.userId,
           type: account.type,
           provider: account.provider,
           provider_account_id: account.providerAccountId,
