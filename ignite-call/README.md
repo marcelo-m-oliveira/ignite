@@ -25,10 +25,10 @@
 <br>
 
 ```bash
-#instalar as dependencias da aplicação
+#Instalar as dependências da aplicação
 npm i 
 
-#iniciar a aplicação
+#Iniciar a aplicação
 npm run dev 
 
 #Rodar o prisma studio para visualizar o banco de dados
