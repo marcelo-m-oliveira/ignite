@@ -19,7 +19,21 @@
 <p align="center">
   <img src=".github/preview.png" width="100%">
 </p>
+<br>
 
+## 🎮 Para iniciar a aplicação
+<br>
+
+```bash
+#instalar as dependencias da aplicação
+npm i 
+
+#iniciar a aplicação
+npm run dev 
+
+#Rodar o prisma studio para visualizar o banco de dados
+npx prisma studio
+```
 ## 🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
