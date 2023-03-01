@@ -50,7 +50,7 @@ export default function Register() {
         name: data.name,
         username: data.username,
       })
-      alert('User created successfully!')
+      alert('Usuário criado com sucesso!')
       await router.push('/register/connect-calendar')
     } catch (err) {
       if (err instanceof AxiosError && err?.response?.data?.message) {
