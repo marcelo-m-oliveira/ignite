@@ -26,6 +26,7 @@ import {
 } from './styles'
 import { convertTimeStringToMinutes } from '@/utils/converts'
 import { api } from '@/lib/axios'
+import { useRouter } from 'next/router'
 
 const timeIntervalsFormSchema = z.object({
   intervals: z
@@ -98,12 +99,16 @@ export default function TimeIntervals() {
   })
 
   const intervals = watch('intervals')
+  const router = useRouter()
 
   async function handleSetTimeIntervals(data: any) {
     const { intervals } = data as TimeIntervalsFormOutput
     await api.post('/users/time-intervals', {
       intervals,
     })
+
+    alert('intervalo de horários salvo com sucesso!')
+    await router.push('/register/update-profile')
   }
 
   return (
