@@ -5,7 +5,7 @@ import {
   TimePickerItem,
   TimePickerList,
 } from '@/pages/schedule/[username]/ScheduleForm/CalendarStep/styles'
-import { Calendar } from '@/Calendar'
+import { Calendar } from '@/components/Calendar'
 
 export function CalendarStep() {
   const isDateSelected = true
