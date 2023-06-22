@@ -8,10 +8,17 @@ import {
   TimePickerList,
 } from '@/pages/schedule/[username]/ScheduleForm/CalendarStep/styles'
 import { Calendar } from '@/components/Calendar'
+import dayjs from 'dayjs'
 
 export function CalendarStep() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const isDateSelected = !!selectedDate
+
+  const weekDay = selectedDate ? dayjs(selectedDate).format('dddd') : null
+  const discribedDate = selectedDate
+    ? dayjs(selectedDate).format('DD["de"]')
+    : null
+
   return (
     <Container isTimePickerOpen={isDateSelected}>
       <Calendar selectedDate={selectedDate} onDateSelected={setSelectedDate} />
@@ -19,7 +26,7 @@ export function CalendarStep() {
       {isDateSelected && (
         <TimePicker>
           <TimePickerHeader>
-            Quarta-feira <span>20 de batata</span>
+            {weekDay} <span>20 de batata</span>
           </TimePickerHeader>
 
           <TimePickerList>
